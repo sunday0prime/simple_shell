@@ -10,14 +10,10 @@
 
 int main(int ac, char **av)
 {
-	info_t info[] = { INFO_INIT };
-	int fd = 2;
-
-	asm ("mov %1, %\n\t"
-			"add $3, %0"
-			: "=r" (fd)
-			: "r" (fd)
-		);
+	info_t info[] = {{
+		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, 0, 0
+	}};
+	int fd = 5;
 
 	if (ac == 2)
 	{
@@ -34,7 +30,7 @@ int main(int ac, char **av)
 				_eputchar(BUF_FLUSH);
 				exit(127);
 			}
-			return (EXIT_FAILUR);
+			return (EXIT_FAILURE);
 		}
 		info->readfd = fd;
 	}

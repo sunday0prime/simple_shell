@@ -33,7 +33,7 @@ int is_cmd(info_t *info, char *path)
  * Return: pointer to new buffer
  */
 
-char *dup_char(char *pathstr, int start, int stop)
+char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
 	int i = 0;
@@ -41,7 +41,7 @@ char *dup_char(char *pathstr, int start, int stop)
 
 	for (k = 0, i = start; i < stop; i++)
 		if (pathstr[i] != ':')
-			buf[k++] = pathstring[i];
+			buf[k++] = pathstr[i];
 
 	buf[k] = 0;
 	return (buf);
@@ -64,12 +64,12 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	if (!pathstr)
 		return (NULL);
 
-	if ((_strlen(cmd) > 2) && starts_with(cmd, './'))
+	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
 		if (is_cmd(info, cmd))
 			return (cmd);
 	}
-	while (true)
+	while (1)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
 		{
@@ -78,7 +78,7 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 				_strcat(path, cmd);
 			else
 			{
-				strcat(path, '/');
+				strcat(path, "/");
 				_strcat(path, cmd);
 			}
 			if (is_cmd(info, path))

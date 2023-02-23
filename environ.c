@@ -7,7 +7,7 @@
  * Return: Always 0
  */
 
-int _myenv(ifno_t *info)
+int _myenv(info_t *info)
 {
 	print_list_str(info->env);
 	return (0);
